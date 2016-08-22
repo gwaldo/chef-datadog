@@ -51,9 +51,7 @@ handler_config = {
   :application_key => node['datadog']['application_key'],
   :use_ec2_instance_id => node['datadog']['use_ec2_instance_id'],
   :tag_prefix => node['datadog']['tag_prefix'],
-  :other_dd_urls => node['datadog']['other_dd_urls'],
-  :other_api_keys => node['datadog']['other_api_keys'],
-  :other_application_keys => node['datadog']['other_application_keys']
+  :url => node['datadog']['url']
 }
 
 unless node['datadog']['use_ec2_instance_id']

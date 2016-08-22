@@ -53,6 +53,11 @@ end
 #
 raise "Add a ['datadog']['api_key'] attribute to configure this node's Datadog Agent." if node['datadog'] && node['datadog']['api_key'].nil?
 
+api_keys = node['datadog']['api_key']
+dd_urls = node['datadog']['dd_url']
+api_keys = [api_keys] unless api_keys.is_a? Array
+dd_urls = [dd_urls] unless dd_urls.is_a? Array
+
 template agent_config_file do
   if is_windows
     owner 'Administrators'
@@ -64,8 +69,8 @@ template agent_config_file do
     mode 0640
   end
   variables(
-    :api_key => node['datadog']['api_key'],
-    :dd_url => node['datadog']['url']
+    :api_key => api_keys,
+    :dd_url => dd_urls
   )
   sensitive true if Chef::Resource.instance_methods(false).include?(:sensitive)
 end

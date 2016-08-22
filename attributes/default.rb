@@ -21,9 +21,11 @@
 # The Datadog api key to associate your agent's data with your organization.
 # Can be found here:
 # https://app.datadoghq.com/account/settings
+# This can be a list of api keys
 default['datadog']['api_key'] = nil
 
 # Create an application key on the Account Settings page
+# This can be a list of application keys
 default['datadog']['application_key'] = nil
 
 # Add this prefix to all Chef tags sent to Datadog: "#{tag_prefix}#{tag}"
@@ -200,11 +202,6 @@ default['datadog']['histogram_percentiles'] = '0.95'
 
 # extra_packages to install
 default['datadog']['extra_packages'] = {}
-
-# Multiple endpoints/api_keys settings
-default['datadog']['other_dd_urls'] = nil # list of endpoints
-default['datadog']['other_api_keys'] = nil # list of api_keys
-default['datadog']['other_application_keys'] = nil # list of application_keys
 
 # For service-specific configuration, use the integration recipes included
 # in this cookbook, and apply them to the appropirate node's run list.
